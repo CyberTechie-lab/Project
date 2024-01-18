@@ -93,6 +93,15 @@
 <body>
     <div class="login-container">
         <h2>Signup</h2>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li style="color: {% if 'error' in message %}black{% else %}black{% endif %}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         <form class="login-form" action="/signup" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" pattern="^[a-zA-Z0-9_]{3,20}$" title="3-20 characters, alphanumeric and underscores only" required>
@@ -107,7 +116,6 @@
             <p>Already have an account? <a href="/">Login</a></p>
         </form>
     </div>
-
     <!-- Font Awesome for social icons -->
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </body>
