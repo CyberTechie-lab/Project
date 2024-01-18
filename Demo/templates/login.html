@@ -92,7 +92,15 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>Login</h2>    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li style="color: {% if 'error' in message %}black{% else %}black{% endif %}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
         <form class="login-form" action="/login" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -111,7 +119,6 @@
             <!-- Add more social icons as needed -->
         </div>
     </div>
-
     <!-- Font Awesome for social icons -->
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </body>
